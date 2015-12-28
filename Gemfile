@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'activesupport'
-gem 'fsdb'
 
 group :development, :test do
   gem 'factory_girl'

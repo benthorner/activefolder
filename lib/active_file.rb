@@ -2,24 +2,19 @@ require 'active_support/all'
 
 require 'active_file/base'
 require 'active_file/config'
-require 'active_file/stores/fsdb'
-require 'active_file/connections/bare'
+require 'active_file/metal/client'
 
 module ActiveFile
   class << self
-    def configure
+    def setup
       yield config
     end
 
-    def store
-      @store ||= Stores::Fsdb.new(connection)
+    def client
+      @client ||= Metal::Client.new(config.client)
     end
 
     private
-
-    def connection
-      Connections::Bare.new(config.connection_path)
-    end
 
     def config
       @config ||= Config.new

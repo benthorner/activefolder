@@ -10,6 +10,6 @@ RSpec.configure do |config|
   end
 end
 
-ActiveFile.configure do |config|
-  config.connection_path = 'tmp'
+ActiveFile.setup do |config|
+  config.client.root_path = 'tmp'
 end

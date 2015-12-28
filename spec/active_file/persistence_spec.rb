@@ -6,7 +6,6 @@ describe 'Persistence' do
   let(:fixture_path) { 'spec/support/fixtures/attributes.yaml' }
   let(:subject_path) { File.join('tmp', subject.path) }
 
-
   describe '#load!' do
     before do
       FileUtils.mkdir_p(subject_path)

@@ -1,9 +1,11 @@
+require 'active_file/metal/config'
+
 module ActiveFile
   class Config
-    attr_accessor :connection_path
+    attr_reader :client
 
     def initialize
-      self.connection_path = '.'
+      @client = Metal::Config.new
     end
   end
 end
