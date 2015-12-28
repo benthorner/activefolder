@@ -24,6 +24,12 @@ module ActiveFile
           raise SystemError.new(e)
         end
 
+        def glob(path:)
+          Dir.glob(path)
+        rescue SystemCallError => e
+          raise SystemError.new(e)
+        end
+
         private
 
         def full_path(path)

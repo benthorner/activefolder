@@ -1,11 +1,13 @@
 require 'ostruct'
 
-require 'active_file/traits/persistence'
-require 'active_file/errors'
+require 'active_file/model/traits/persistence'
+require 'active_file/model/traits/has_belongs'
+require 'active_file/model/errors'
 
 module ActiveFile
   class Base < OpenStruct
-    include Traits::Persistence
+    include Model::Traits::Persistence
+    include Model::Traits::HasBelongs
 
     def path
       required(:name); required(:base_dir)
