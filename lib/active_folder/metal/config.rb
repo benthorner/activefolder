@@ -1,4 +1,4 @@
-module ActiveFile
+module ActiveFolder
   module Metal
     class Config
       attr_accessor :root_path

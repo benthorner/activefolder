@@ -1,10 +1,10 @@
 require 'active_support/all'
 
-require 'active_file/base'
-require 'active_file/config'
-require 'active_file/metal/client'
+require 'active_folder/base'
+require 'active_folder/config'
+require 'active_folder/metal/client'
 
-module ActiveFile
+module ActiveFolder
   class << self
     def setup
       yield config

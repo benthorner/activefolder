@@ -14,13 +14,14 @@ describe 'Persistence' do
     end
 
     it 'loads the object attributes' do
-      expected = { meta: { key1: 'value1' },
-                   data: { key2: 'value2' } }
-      expect(subject.attributes).to eq expected
+      expect(subject.attributes).to eq(meta: { key1: 'value1' },
+                                       data: { key2: 'value2' })
     end
   end
 
   describe '#save!' do
+    let(:attributes_path) { File.join(subject_path, 'attributes.yaml') }
+
     before do
       subject.meta = { key1: 'value1' }
       subject.data = { key2: 'value2' }
@@ -28,8 +29,7 @@ describe 'Persistence' do
     end
 
     it 'persists the object attributes' do
-      actual = File.read(File.join(subject_path, 'attributes.yaml'))
-      expect(File.read(fixture_path)).to eq actual
+      expect(File.read attributes_path).to eq File.read(fixture_path)
     end
   end
 end

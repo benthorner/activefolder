@@ -1,8 +1,8 @@
 require 'fileutils'
 
-require 'active_file/metal/errors'
+require 'active_folder/metal/errors'
 
-module ActiveFile
+module ActiveFolder
   module Metal
     module Adapters
       class Bare

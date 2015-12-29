@@ -1,6 +1,6 @@
-require 'active_file/model/traits/collection'
+require 'active_folder/model/traits/collection'
 
-module ActiveFile
+module ActiveFolder
   module Model
     module Collections
       class HasMany

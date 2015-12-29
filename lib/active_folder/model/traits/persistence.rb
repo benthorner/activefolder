@@ -1,7 +1,7 @@
-require 'active_file/metal/files/yaml'
-require 'active_file/model/errors'
+require 'active_folder/metal/files/yaml'
+require 'active_folder/model/errors'
 
-module ActiveFile
+module ActiveFolder
   module Model
     module Traits
       module Persistence

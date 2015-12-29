@@ -1,4 +1,4 @@
-module ActiveFile
+module ActiveFolder
   module Metal
     module Connections
       class Bare

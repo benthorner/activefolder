@@ -1,4 +1,4 @@
-module ActiveFile
+module ActiveFolder
   module Model
     module Traits
       module Enumeration
@@ -11,7 +11,7 @@ module ActiveFile
           element = File.join(model_name, name)
           query = File.join(model_base_dir, '**', element)
 
-          paths = ActiveFile.client.glob(path: query)
+          paths = ActiveFolder.client.glob(path: query)
           paths.map { |path| model_class.load(path) }
         end
 

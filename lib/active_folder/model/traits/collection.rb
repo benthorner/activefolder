@@ -1,6 +1,6 @@
-require 'active_file/model/traits/enumeration'
+require 'active_folder/model/traits/enumeration'
 
-module ActiveFile
+module ActiveFolder
   module Model
     module Traits
       module Collection

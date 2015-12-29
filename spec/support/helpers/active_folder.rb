@@ -1,4 +1,4 @@
-require 'active_file'
+require 'active_folder'
 
 RSpec.configure do |config|
   config.after(:all) do
@@ -10,12 +10,12 @@ RSpec.configure do |config|
   end
 end
 
-ActiveFile.setup do |config|
+ActiveFolder.setup do |config|
   config.client.root_path = 'tmp'
 end
 
-class Model < ActiveFile::Base
+class Model < ActiveFolder::Base
   has_many :model_children
 end
 
-class ModelChild < ActiveFile::Base; end
+class ModelChild < ActiveFolder::Base; end

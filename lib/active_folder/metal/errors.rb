@@ -1,6 +1,6 @@
-require 'active_file/errors'
+require 'active_folder/errors'
 
-module ActiveFile
+module ActiveFolder
   module Metal
     class SyntaxError < Error; end
     class SystemError < Error; end

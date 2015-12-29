@@ -1,6 +1,6 @@
-require 'active_file/model/collections/has_many'
+require 'active_folder/model/collections/has_many'
 
-module ActiveFile
+module ActiveFolder
   module Model
     module Traits
       module HasBelongs

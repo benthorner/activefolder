@@ -1,8 +1,8 @@
 require 'yaml'
 
-require 'active_file/metal/errors'
+require 'active_folder/metal/errors'
 
-module ActiveFile
+module ActiveFolder
   module Metal
     module Files
       class Yaml
@@ -28,7 +28,7 @@ module ActiveFile
         end
 
         def client
-          ActiveFile.client
+          ActiveFolder.client
         end
       end
     end

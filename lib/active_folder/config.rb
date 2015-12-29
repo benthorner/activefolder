@@ -1,6 +1,6 @@
-require 'active_file/metal/config'
+require 'active_folder/metal/config'
 
-module ActiveFile
+module ActiveFolder
   class Config
     attr_reader :client
 

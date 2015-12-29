@@ -1,7 +1,7 @@
-require 'active_file/metal/adapters/bare'
-require 'active_file/metal/connections/bare'
+require 'active_folder/metal/adapters/bare'
+require 'active_folder/metal/connections/bare'
 
-module ActiveFile
+module ActiveFolder
   module Metal
     class Client
       def initialize(config)
