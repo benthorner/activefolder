@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :model do
-    name { Faker::Name.first_name }
-    base_dir { '.' }
+    name { Faker::Internet.user_name }
+    base_dir { '/models' }
   end
 end

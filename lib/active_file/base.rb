@@ -8,6 +8,17 @@ module ActiveFile
   class Base < OpenStruct
     include Model::Traits::Persistence
     include Model::Traits::HasBelongs
+    extend Model::Traits::Collection
+
+    class << self
+      def model_name
+        model = name.demodulize
+        model.underscore.pluralize
+      end
+
+      def model_class; self; end
+      def model_base_dir; '/' end
+    end
 
     def path
       required(:name); required(:base_dir)

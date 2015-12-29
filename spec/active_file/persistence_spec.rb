@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Persistence' do
   let(:fixture_path) { 'spec/support/fixtures/attributes.yaml' }
 
-  let(:subject) { build :model, name: 'model', base_dir: 'models' }
+  let(:subject) { build :model, name: 'model', base_dir: '/models' }
   let(:subject_path) { 'tmp/models/model' }
 
   describe '#load!' do

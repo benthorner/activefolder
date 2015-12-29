@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'pathname'
 
 require 'active_file/metal/errors'
 
@@ -39,9 +38,7 @@ module ActiveFile
         end
 
         def relative_path(path)
-          p1 = Pathname.new(path)
-          p2 = Pathname.new(@root)
-          p1.relative_path_from(p2)
+          path.sub(@root, '')
         end
       end
     end

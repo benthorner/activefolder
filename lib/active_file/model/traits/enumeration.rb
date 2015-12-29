@@ -4,13 +4,23 @@ module ActiveFile
       module Enumeration
         def find(name)
           results = all(name)
-          results.one? ? results.first : results
+          results.count < 2 ? results.first : results
         end
 
         def all(name = '*')
-          query = File.join(model_base_dir, '**', model_name, name)
+          element = File.join(model_name, name)
+          query = File.join(model_base_dir, '**', element)
+
           paths = ActiveFile.client.glob(path: query)
-          paths.lazy.map { |path| model_class.load(path) }
+          paths.map { |path| model_class.load(path) }
+        end
+
+        def last
+          all.last
+        end
+
+        def first
+          all.first
         end
       end
     end

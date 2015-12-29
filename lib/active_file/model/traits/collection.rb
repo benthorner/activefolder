@@ -6,13 +6,13 @@ module ActiveFile
       module Collection
         include Enumeration
 
-        def new(**args)
+        def build(**args)
           dir = File.join(model_base_dir, model_name)
           model_class.new(**args.merge(base_dir: dir))
         end
 
         def create(**args)
-          instance = new(**args); instance.save!; instance
+          instance = build(**args); instance.save!; instance
         end
 
         def find_or_create(**args)
