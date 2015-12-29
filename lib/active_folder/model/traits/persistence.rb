@@ -18,6 +18,19 @@ module ActiveFolder
             attributes_file.save(attributes)
           end
 
+          def update!(**args)
+            args.each { |k,v| self[k] = v }
+            self.save!
+          end
+
+          def update(**args)
+            args.each { |k,v| self[k] = v }
+            self.save
+          end
+
+          def load; self.load! end
+          def save; self.save! end
+
           private
 
           def attributes_file
@@ -28,12 +41,11 @@ module ActiveFolder
 
         class_methods do
           def load(path)
-            params = { name: File.basename(path),
-                       base_dir: File.dirname(path) }
-
+            params = { name: File.basename(path), base_dir: File.dirname(path) }
             instance = self.new(**params)
             instance.load!; instance
           end
+
         end
       end
     end
