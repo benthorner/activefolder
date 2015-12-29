@@ -39,4 +39,36 @@ describe 'Enumeration' do
       expect(ModelChild.last).to be_nil
     end
   end
+
+  describe '.where' do
+    let!(:child_elements) do
+      [elements[0].model_children.create(name: 'model_child_1'),
+       elements[1].model_children.create(name: 'model_child_2')]
+    end
+
+    it 'filters by single attribute' do
+      results = Model.where(name: 'model_1')
+      expect(results).to eq [elements[0]]
+    end
+
+    it 'filters by multiple attributes' do
+      results = Model.where(name: 'model_2', _: nil)
+      expect(results).to eq [elements[1]]
+    end
+
+    it 'filters by regular expression' do
+      results = Model.where(name: /.*/)
+      expect(results).to eq elements
+    end
+
+    it 'filters by array disjunction' do
+      results = Model.where(model_children: child_elements)
+      expect(results).to eq elements
+    end
+
+    it 'filters recursively' do
+      params = { model_children: [{ name: 'model_child_1' }] }
+      expect(Model.where(**params)).to eq [elements[0]]
+    end
+  end
 end

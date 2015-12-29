@@ -2,8 +2,8 @@ require 'active_folder/model/traits/collection'
 
 module ActiveFolder
   module Model
-    module Collections
-      class HasMany
+    module Utilities
+      class Collection
         include Model::Traits::Collection
 
         def initialize(owner, collection)

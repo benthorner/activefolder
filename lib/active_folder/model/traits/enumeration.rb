@@ -1,7 +1,11 @@
+require 'active_folder/model/utilities/matcher'
+
 module ActiveFolder
   module Model
     module Traits
       module Enumeration
+        using Utilities::Matcher
+
         def find(name)
           results = all(name)
           results.count < 2 ? results.first : results
@@ -21,6 +25,14 @@ module ActiveFolder
 
         def first
           all.first
+        end
+
+        def to_a
+          all
+        end
+
+        def where(**args)
+          all.select { |element| args.match(element) }
         end
       end
     end

@@ -1,6 +1,6 @@
 require 'pathname'
 
-require 'active_folder/model/collections/has_many'
+require 'active_folder/model/utilities/collection'
 
 module ActiveFolder
   module Model
@@ -11,7 +11,7 @@ module ActiveFolder
         class_methods do
           def has_many collection
             define_method collection do
-              Collections::HasMany.new(self, collection.to_s)
+              Utilities::Collection.new(self, collection.to_s)
             end
           end
 
