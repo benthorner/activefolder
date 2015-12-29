@@ -13,3 +13,9 @@ end
 ActiveFile.setup do |config|
   config.client.root_path = 'tmp'
 end
+
+class Model < ActiveFile::Base
+  has_many :model_children
+end
+
+class ModelChild < ActiveFile::Base; end

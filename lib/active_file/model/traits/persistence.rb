@@ -5,28 +5,35 @@ module ActiveFile
   module Model
     module Traits
       module Persistence
-        def load!
-          attrs = validate(attribute_file.load)
-          attrs.each { |k,v| self[k] = v }
+        extend ActiveSupport::Concern
+
+        included do
+          def load!
+            attrs = attributes_file.load
+            raise TypeError.new(attrs) unless attrs.respond_to?(:each_pair)
+            attrs.each { |k,v| self[k] = v }
+          end
+
+          def save!
+            attributes_file.save(attributes)
+          end
+
+          private
+
+          def attributes_file
+            params = { dir: path, name: 'attributes' }
+            Metal::Files::Yaml.new(**params)
+          end
         end
 
-        def save!
-          attribute_file.save(attributes)
-        end
+        class_methods do
+          def load(path)
+            params = { name: File.basename(path),
+                       base_dir: File.dirname(path) }
 
-        def load; self.load! end
-        def save; self.save! end
-
-        private
-
-        def validate(attrs)
-          return attrs if attrs.respond_to?(:each_pair)
-          raise TypeError.new(attrs)
-        end
-
-        def attribute_file
-          params = { dir: path, name: 'attributes' }
-          Metal::Files::Yaml.new(**params)
+            instance = self.new(**params)
+            instance.load!; instance
+          end
         end
       end
     end

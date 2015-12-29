@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe 'Persistence' do
-  let(:subject) { build :active_file }
-
   let(:fixture_path) { 'spec/support/fixtures/attributes.yaml' }
-  let(:subject_path) { File.join('tmp', subject.path) }
+
+  let(:subject) { build :model, name: 'model', base_dir: 'models' }
+  let(:subject_path) { 'tmp/models/model' }
 
   describe '#load!' do
     before do

@@ -1,31 +1,21 @@
+require 'active_file/model/traits/collection'
+
 module ActiveFile
   module Model
     module Collections
       class HasMany
+        include Model::Traits::Collection
+
         def initialize(owner, collection)
           @owner = owner; @collection = collection
-          @model = collection.classify.constantize
         end
 
-        def all
-          params = { path: search_path }
-          paths = ActiveFile.client.glob(params)
-          paths.map { |path| load_from(path) }
+        def model_class
+          @collection.classify.constantize
         end
 
-        private
-
-        def load_from(path)
-          params = { name: File.basename(path),
-                     base_dir: File.dirname(path) }
-
-          instance = @model.new(**params)
-          instance.load; instance
-        end
-
-        def search_path
-          File.join(@owner.path, '**', @collection, '*')
-        end
+        def model_name; @collection end
+        def model_base_dir; @owner.path end
       end
     end
   end
