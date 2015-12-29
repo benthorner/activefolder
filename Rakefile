@@ -3,7 +3,7 @@ require 'rubygems/package'
 
 task :default => [:"bake:rspec", :"bake:ok_rainbow"]
 
-namespace :active_file do
+namespace :active_folder do
   desc 'Build and push a gem for each spec in the current directory'
   task :deploy do
     Dir['*.gemspec'].each do |path|
