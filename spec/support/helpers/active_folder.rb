@@ -18,4 +18,6 @@ class Model < ActiveFolder::Base
   has_many :model_children
 end
 
-class ModelChild < ActiveFolder::Base; end
+class ModelChild < ActiveFolder::Base
+  belongs_to :model
+end

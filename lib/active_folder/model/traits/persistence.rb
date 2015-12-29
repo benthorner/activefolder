@@ -45,7 +45,6 @@ module ActiveFolder
             instance = self.new(**params)
             instance.load!; instance
           end
-
         end
       end
     end
