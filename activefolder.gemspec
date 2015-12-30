@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.name = 'activefolder'
   s.version = SemVer.find.format "%M.%m.%p%s"
   s.licenses = 'GNU GPL v2.0'
-  s.summary = 'Active Folder'
-  s.description = 'A file system ORM'
+  s.summary = 'A file system ORM based on ActiveRecord.'
+  s.description = 'A file system ORM based on ActiveRecord. Objects are files, relations are folders.'
   s.authors = ['Ben Thorner']
   s.email = 'benthorner@outlook.com'
   s.files = Dir['lib/**/*.rb']
