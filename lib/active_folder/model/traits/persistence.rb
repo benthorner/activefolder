@@ -32,6 +32,10 @@ module ActiveFolder
             self.save
           end
 
+          def destroy
+            ActiveFolder.client.del(path: path)
+          end
+
           def load; self.load! end
           def save; self.save! end
 

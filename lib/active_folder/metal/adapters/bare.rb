@@ -33,6 +33,12 @@ module ActiveFolder
           raise SystemError.new(e)
         end
 
+        def del(path:)
+          FileUtils.rm_r full_path(path)
+        rescue SystemCallError => e
+          raise SystemError.new(e)
+        end
+
         private
 
         def full_path(path)

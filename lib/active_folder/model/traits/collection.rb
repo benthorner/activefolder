@@ -19,6 +19,10 @@ module ActiveFolder
           instance.save!; instance
         end
 
+        def destroy_all
+          all.each { |element| element.destroy }
+        end
+
         def find_or_create(args, &block)
           find(args[:name]) || create(args, &block)
         end

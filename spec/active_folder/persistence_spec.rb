@@ -30,7 +30,7 @@ describe 'Persistence' do
 
     it 'loads the object attributes' do
       expect(subject.load.attributes).to eq(meta: { key1: 'value1' },
-                                           data: { key2: 'value2' })
+                                            data: { key2: 'value2' })
     end
   end
 
@@ -65,6 +65,18 @@ describe 'Persistence' do
 
     it 'persists the specified attributes' do
       expect(File.read attributes_path).to eq File.read(fixture_path)
+    end
+  end
+
+  describe '#destroy' do
+    before do
+      FileUtils.mkdir_p(subject_path)
+      FileUtils.cp(fixture_path, subject_path)
+    end
+
+    it 'deletes the object directory' do
+      subject.destroy
+      expect(File.exists? subject_path).to be_falsey
     end
   end
 end

@@ -60,4 +60,11 @@ describe 'Collection' do
       expect(Model.all).to be_empty
     end
   end
+
+  describe '.destroy_all' do
+    it 'destroys all the elements' do
+      element.save; Model.destroy_all
+      expect(Model.all).to be_empty
+    end
+  end
 end

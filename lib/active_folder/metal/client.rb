@@ -22,6 +22,10 @@ module ActiveFolder
         adapter.glob(**args)
       end
 
+      def del(**args)
+        adapter.del(**args)
+      end
+
       def connection
         @connection
       end
