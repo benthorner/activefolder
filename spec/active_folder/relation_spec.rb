@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'HasBelongs' do
+describe 'Relation' do
   describe '.has_one' do
     let(:link_path) { 'tmp/models/model/model_sibling' }
     let(:sibling_path) { 'model_siblings/model_sibling' }

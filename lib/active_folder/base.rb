@@ -1,13 +1,14 @@
 require 'ostruct'
 
 require 'active_folder/model/traits/persistence'
-require 'active_folder/model/traits/has_belongs'
+require 'active_folder/model/traits/relation'
+require 'active_folder/model/traits/collection'
 require 'active_folder/model/errors'
 
 module ActiveFolder
   class Base < OpenStruct
     include Model::Traits::Persistence
-    include Model::Traits::HasBelongs
+    include Model::Traits::Relation
     extend Model::Traits::Collection
 
     class << self

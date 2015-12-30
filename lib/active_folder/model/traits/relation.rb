@@ -8,7 +8,7 @@ require 'active_folder/model/traits/discovery'
 module ActiveFolder
   module Model
     module Traits
-      module HasBelongs
+      module Relation
         using Utilities::Symbol
         extend ActiveSupport::Concern
 
