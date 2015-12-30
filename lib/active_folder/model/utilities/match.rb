@@ -3,7 +3,7 @@ require 'active_folder/model/traits/enumeration'
 module ActiveFolder
   module Model
     module Utilities
-      module Matcher
+      module Match
         refine Object do
           def match(object); self == object end
         end

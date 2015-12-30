@@ -1,10 +1,10 @@
-require 'active_folder/model/utilities/matcher'
+require 'active_folder/model/utilities/match'
 
 module ActiveFolder
   module Model
     module Traits
       module Enumeration
-        using Utilities::Matcher
+        using Utilities::Match
 
         def find(name)
           results = all(name)

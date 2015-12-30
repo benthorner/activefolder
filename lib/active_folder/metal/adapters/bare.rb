@@ -12,6 +12,8 @@ module ActiveFolder
 
         def read(path:)
           File.read full_path(path)
+        rescue Errno::ENOENT => e
+          raise NotFoundError.new(e)
         rescue SystemCallError => e
           raise SystemError.new(e)
         end
