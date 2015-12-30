@@ -16,7 +16,7 @@ module ActiveFolder
 
         def create(args, &block)
           instance = build(args, &block);
-          instance.save!; instance
+          instance.save; instance
         end
 
         def destroy_all

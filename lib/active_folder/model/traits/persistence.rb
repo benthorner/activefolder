@@ -8,7 +8,7 @@ module ActiveFolder
         extend ActiveSupport::Concern
 
         included do
-          def load!
+          def load
             attrs = attributes_file.load
             attrs.each_pair do |key,val|
               self[key] = val
@@ -17,15 +17,12 @@ module ActiveFolder
             self
           end
 
-          def save!
+          def save
             attributes_file.save(attributes)
             self
           end
 
-          def update!(**args)
-            args.each { |k,v| self[k] = v }
-            self.save!
-          end
+          def save!; self.save end
 
           def update(**args)
             args.each { |k,v| self[k] = v }
@@ -35,9 +32,6 @@ module ActiveFolder
           def destroy
             ActiveFolder.client.del(path: path)
           end
-
-          def load; self.load! end
-          def save; self.save! end
 
           private
 
@@ -49,9 +43,10 @@ module ActiveFolder
 
         class_methods do
           def load(path)
-            params = { name: File.basename(path), base_dir: File.dirname(path) }
-            instance = self.new(**params)
-            instance.load!; instance
+            instance = new(name: File.basename(path),
+                           base_dir: File.dirname(path))
+
+            instance.load; instance
           end
         end
       end
