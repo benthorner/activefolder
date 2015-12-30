@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'activesupport'
+gem 'rugged'
 
 group :development do
   gem 'semver2'

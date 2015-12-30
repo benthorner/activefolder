@@ -3,6 +3,7 @@ require 'pathname'
 require 'active_folder/model/utilities/collection'
 require 'active_folder/model/utilities/symbol'
 require 'active_folder/metal/files/text'
+require 'active_folder/model/traits/discovery'
 
 module ActiveFolder
   module Model
@@ -10,6 +11,8 @@ module ActiveFolder
       module HasBelongs
         using Utilities::Symbol
         extend ActiveSupport::Concern
+
+        include Discovery
 
         class_methods do
           def has_many collection
@@ -41,17 +44,6 @@ module ActiveFolder
             define_method "#{element}=" do |value|
               link_file(element).save(value.path)
             end
-          end
-
-          def current(path = Dir.pwd)
-            pathname = Pathname.new(path)
-
-            dir = pathname.ascend do |file|
-              parent_dir = file.parent.basename.to_s
-              break(file) if parent_dir == model_name
-            end
-
-            model_class.load(dir) if dir
           end
         end
       end

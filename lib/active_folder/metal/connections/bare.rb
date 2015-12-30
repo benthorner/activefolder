@@ -9,6 +9,10 @@ module ActiveFolder
         def root_path
           @config.root_path
         end
+
+        def current_path
+          Dir.pwd
+        end
       end
     end
   end
