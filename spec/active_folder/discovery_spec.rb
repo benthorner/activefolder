@@ -6,7 +6,6 @@ describe 'Discovery' do
     let(:child) { subject.model_children.create(name: 'child') }
 
     it 'returns the nearest instance' do
-      expect(Model.current).to be_nil
       expect(Model.current subject.path).to eq subject
       expect(Model.current child.path).to eq subject
     end

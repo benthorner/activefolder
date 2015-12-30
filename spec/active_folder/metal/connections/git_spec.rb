@@ -19,10 +19,4 @@ describe ActiveFolder::Metal::Connections::Git do
         .to raise_error ActiveFolder::Metal::SystemError
     end
   end
-
-  describe '#current_path' do
-    it 'returns the working directory' do
-      expect(subject.current_path).to eq Dir.pwd
-    end
-  end
 end

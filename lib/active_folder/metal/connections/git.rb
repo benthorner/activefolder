@@ -8,10 +8,8 @@ module ActiveFolder
           @config = config
         end
 
-        def current_path; Dir.pwd end
-
         def root_path
-          rugged.discover(current_path)
+          rugged.discover(Dir.pwd)
         rescue Rugged::RepositoryError => e
           raise SystemError.new(e)
         end

@@ -6,10 +6,6 @@ module ActiveFolder
 
         class_methods do
           def current(path = nil)
-            client = ActiveFolder.client
-            connection = client.connection
-
-            path ||= connection.current_path
             pathname = Pathname.new(path)
 
             dir = pathname.ascend do |file|
