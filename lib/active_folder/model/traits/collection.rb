@@ -6,17 +6,25 @@ module ActiveFolder
       module Collection
         include Enumeration
 
-        def build(**args)
+        def build(args, &block)
           dir = File.join(model_base_dir, model_name)
-          model_class.new(**args.merge(base_dir: dir))
+          args = args.merge(base_dir: dir)
+
+          instance = model_class.new(args)
+          yield instance if block_given?; instance
         end
 
-        def create(**args)
-          instance = build(**args); instance.save!; instance
+        def create(args, &block)
+          instance = build(args, &block);
+          instance.save!; instance
         end
 
-        def find_or_create(**args)
-          find(args[:name]) || create(**args)
+        def find_or_create(args, &block)
+          find(args[:name]) || create(args, &block)
+        end
+
+        def find_or_initialize(args, &block)
+          find(args[:name]) || build(args, &block)
         end
       end
     end
