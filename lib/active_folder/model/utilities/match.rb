@@ -8,6 +8,10 @@ module ActiveFolder
           def match(object); self == object end
         end
 
+        refine Range do
+          def match(object); member?(object) end
+        end
+
         refine Hash do
           def match(object)
             keys.all? do |key|

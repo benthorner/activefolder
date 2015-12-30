@@ -34,6 +34,10 @@ module ActiveFolder
         def where(**args)
           all.select { |element| args.match(element) }
         end
+
+        def count
+          all.count
+        end
       end
     end
   end

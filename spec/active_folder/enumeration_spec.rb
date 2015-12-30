@@ -42,8 +42,8 @@ describe 'Enumeration' do
 
   describe '.where' do
     let!(:child_elements) do
-      [elements[0].model_children.create(name: 'model_child_1'),
-       elements[1].model_children.create(name: 'model_child_2')]
+      [elements[0].model_children.create(name: 'child_1', id: 1),
+       elements[1].model_children.create(name: 'child_2', id: 2)]
     end
 
     it 'filters by single attribute' do
@@ -52,8 +52,13 @@ describe 'Enumeration' do
     end
 
     it 'filters by multiple attributes' do
-      results = Model.where(name: 'model_2', _: nil)
-      expect(results).to eq [elements[1]]
+      results = ModelChild.where(name: 'child_2', id: 2)
+      expect(results).to eq [child_elements[1]]
+    end
+
+    it 'filters by range' do
+      results = ModelChild.where(id: 1..2)
+      expect(results).to eq child_elements
     end
 
     it 'filters by regular expression' do
@@ -69,6 +74,12 @@ describe 'Enumeration' do
     it 'filters recursively' do
       params = { model_children: [{ name: 'model_child_1' }] }
       expect(Model.where(**params)).to eq [elements[0]]
+    end
+  end
+
+  describe '.count' do
+    it 'returns the count of elements' do
+      expect(Model.count).to eq elements.count
     end
   end
 end
