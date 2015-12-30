@@ -10,12 +10,16 @@ module ActiveFolder
         included do
           def load!
             attrs = attributes_file.load
-            raise TypeError.new(attrs) unless attrs.respond_to?(:each_pair)
-            attrs.each { |k,v| self[k] = v }
+            attrs.each_pair do |key,val|
+              self[key] = val
+            end
+
+            self
           end
 
           def save!
             attributes_file.save(attributes)
+            self
           end
 
           def update!(**args)

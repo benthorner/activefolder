@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe 'Persistence' do
-  let(:fixture_path) { 'spec/support/fixtures/attributes.yaml' }
+  let(:subject) do
+    build :model, name: 'model', base_dir: '/models',
+      meta: { key1: 'value1' }, data: { key2: 'value2' }
+  end
 
-  let(:subject) { build :model, name: 'model', base_dir: '/models' }
+  let(:fixture_path) { 'spec/support/fixtures/attributes.yaml' }
   let(:subject_path) { 'tmp/models/model' }
   let(:attributes_path) { File.join(subject_path, 'attributes.yaml') }
 
@@ -11,12 +14,11 @@ describe 'Persistence' do
     before do
       FileUtils.mkdir_p(subject_path)
       FileUtils.cp(fixture_path, subject_path)
-      subject.load!
     end
 
     it 'loads the object attributes' do
-      expect(subject.attributes).to eq(meta: { key1: 'value1' },
-                                       data: { key2: 'value2' })
+      expect(subject.load!.attributes).to eq(meta: { key1: 'value1' },
+                                             data: { key2: 'value2' })
     end
   end
 
@@ -24,43 +26,31 @@ describe 'Persistence' do
     before do
       FileUtils.mkdir_p(subject_path)
       FileUtils.cp(fixture_path, subject_path)
-      subject.load
     end
 
     it 'loads the object attributes' do
-      expect(subject.attributes).to eq(meta: { key1: 'value1' },
-                                       data: { key2: 'value2' })
+      expect(subject.load.attributes).to eq(meta: { key1: 'value1' },
+                                           data: { key2: 'value2' })
     end
   end
 
   describe '#save!' do
-    before do
-      subject.meta = { key1: 'value1' }
-      subject.data = { key2: 'value2' }
-      subject.save!
-    end
-
     it 'persists the object attributes' do
+      expect(subject.save!).to eq subject
       expect(File.read attributes_path).to eq File.read(fixture_path)
     end
   end
 
   describe '#save' do
-    before do
-      subject.meta = { key1: 'value1' }
-      subject.data = { key2: 'value2' }
-      subject.save
-    end
-
     it 'persists the object attributes' do
+      expect(subject.save).to eq subject
       expect(File.read attributes_path).to eq File.read(fixture_path)
     end
   end
 
   describe '#update!' do
     before do
-      subject.update!(meta: { key1: 'value1' },
-                     data: { key2: 'value2' })
+      subject.update!(meta: { key1: 'value1' }, data: { key2: 'value2' })
     end
 
     it 'persists the specified attributes' do
@@ -70,8 +60,7 @@ describe 'Persistence' do
 
   describe '#update' do
     before do
-      subject.update(meta: { key1: 'value1' },
-                     data: { key2: 'value2' })
+      subject.update(meta: { key1: 'value1' }, data: { key2: 'value2' })
     end
 
     it 'persists the specified attributes' do
