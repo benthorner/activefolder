@@ -11,7 +11,6 @@ module ActiveFolder
       module Relation
         using Utilities::Symbol
         extend ActiveSupport::Concern
-
         include Discovery
 
         class_methods do
@@ -23,7 +22,7 @@ module ActiveFolder
 
           def belongs_to element
             define_method element do
-              element.to_class.current(self.path)
+              element.to_class.find_by_path(self.path)
             end
           end
 

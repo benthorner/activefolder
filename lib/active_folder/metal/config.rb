@@ -1,10 +1,27 @@
+require 'rugged'
+
+require 'active_folder/metal/errors'
+
 module ActiveFolder
   module Metal
     class Config
-      attr_accessor :root_path
+      attr_writer :root_path
 
       def initialize
         self.root_path = '.'
+      end
+
+      def root_path
+        @root_path != :git ? @root_path :
+          rugged.discover(Dir.pwd)
+      rescue Rugged::RepositoryError => e
+        raise SystemError.new(e)
+      end
+
+      private
+
+      def rugged
+        Rugged::Repository
       end
     end
   end

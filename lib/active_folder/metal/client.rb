@@ -1,46 +1,33 @@
-require 'active_folder/metal/adapters/bare'
-require 'active_folder/metal/connections/bare'
-require 'active_folder/metal/connections/git'
+require 'active_folder/metal/adapters/local'
 
 module ActiveFolder
   module Metal
     class Client
       def initialize(config)
         @config = config
-        @connection = connect(config)
       end
 
-      def load(**args)
-        adapter.read(**args)
+      def load(path:)
+        adapter.read(path)
       end
 
-      def save(**args)
-        adapter.write(**args)
+      def save(path:, data:)
+        adapter.mkdir_p File.dirname(path)
+        adapter.write(path, data)
       end
 
-      def glob(**args)
-        adapter.glob(**args)
+      def glob(path:)
+        adapter.glob(path)
       end
 
-      def del(**args)
-        adapter.del(**args)
-      end
-
-      def connection
-        @connection
+      def del(path:)
+        adapter.rm_r(path)
       end
 
       private
 
-      def connect(config)
-        case config.root_path
-          when :git then Connections::Git.new(config)
-          else Connections::Bare.new(config)
-        end
-      end
-
       def adapter
-        @adapter ||= Adapters::Bare.new(connection)
+        Adapters::Local.new(@config)
       end
     end
   end

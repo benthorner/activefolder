@@ -5,7 +5,7 @@ module ActiveFolder
         extend ActiveSupport::Concern
 
         class_methods do
-          def current(path = nil)
+          def find_by_path(path)
             pathname = Pathname.new(path)
 
             dir = pathname.ascend do |file|

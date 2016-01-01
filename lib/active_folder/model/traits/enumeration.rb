@@ -12,31 +12,21 @@ module ActiveFolder
         end
 
         def all(name = '*')
-          element = File.join(model_name, name)
-          query = File.join(model_base_dir, '**', element)
+          query_suffix = File.join(model_name, name)
+          query = File.join(model_base_dir, '**', query_suffix)
 
           paths = ActiveFolder.client.glob(path: query)
           paths.map { |path| model_class.load(path) }
         end
 
-        def last
-          all.last
-        end
+        def last; all.last end
+        def first; all.first end
 
-        def first
-          all.first
-        end
-
-        def to_a
-          all
-        end
+        def count; all.count end
+        def to_a; all end
 
         def where(**args)
           all.select { |element| args.match(element) }
-        end
-
-        def count
-          all.count
         end
       end
     end
