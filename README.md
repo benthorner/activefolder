@@ -195,7 +195,7 @@ Discover an object's heritage...
 
     london.path => '/countries/uk/cities/London'
 
-    Country.current(london.path)
+    Country.find_by_path(london.path)
     => #<Country name="UK", ...>
 
 Useful for command line programs.
