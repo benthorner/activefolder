@@ -1,4 +1,4 @@
-require 'active_folder/model/traits/enumeration'
+require 'activefolder/model/traits/enumeration'
 
 module ActiveFolder
   module Model

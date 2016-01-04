@@ -1,6 +1,6 @@
 require 'pry'
 
-require 'support/helpers/active_folder'
+require 'support/helpers/activefolder'
 require 'support/helpers/factory_girl'
 
 RSpec.configure do |config|

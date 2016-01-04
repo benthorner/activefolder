@@ -1,4 +1,4 @@
-require 'active_folder'
+require 'activefolder'
 
 RSpec.configure do |config|
   config.after(:each) do

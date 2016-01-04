@@ -1,4 +1,4 @@
-require 'active_folder/errors'
+require 'activefolder/errors'
 
 module ActiveFolder
   module Metal

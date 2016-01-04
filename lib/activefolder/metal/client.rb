@@ -1,4 +1,4 @@
-require 'active_folder/metal/adapters/local'
+require 'activefolder/metal/adapters/local'
 
 module ActiveFolder
   module Metal

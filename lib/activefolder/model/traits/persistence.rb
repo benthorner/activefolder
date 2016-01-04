@@ -1,5 +1,5 @@
-require 'active_folder/metal/files/yaml'
-require 'active_folder/model/errors'
+require 'activefolder/metal/files/yaml'
+require 'activefolder/model/errors'
 
 module ActiveFolder
   module Model

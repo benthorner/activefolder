@@ -1,8 +1,10 @@
 require 'active_support/all'
+require 'pathname'
+require 'yaml'
 
-require 'active_folder/base'
-require 'active_folder/config'
-require 'active_folder/metal/client'
+require 'activefolder/base'
+require 'activefolder/config'
+require 'activefolder/metal/client'
 
 module ActiveFolder
   class << self

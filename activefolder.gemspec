@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = 'benthorner@outlook.com'
   s.files = Dir['lib/**/*.rb']
   s.required_ruby_version = '>= 2.2.2'
-  s.homepage = 'https://github.com/benthorner/active_folder'
+  s.homepage = 'https://github.com/benthorner/activefolder'
 
   s.add_runtime_dependency 'activesupport', '~> 4.2', '>= 4.2.5'
 end

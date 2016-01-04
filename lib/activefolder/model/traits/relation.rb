@@ -1,9 +1,7 @@
-require 'pathname'
-
-require 'active_folder/model/utilities/collection'
-require 'active_folder/model/utilities/symbol'
-require 'active_folder/metal/files/text'
-require 'active_folder/model/traits/discovery'
+require 'activefolder/model/utilities/collection'
+require 'activefolder/model/utilities/symbol'
+require 'activefolder/metal/files/text'
+require 'activefolder/model/traits/discovery'
 
 module ActiveFolder
   module Model

@@ -1,6 +1,6 @@
 require 'fileutils'
 
-require 'active_folder/metal/errors'
+require 'activefolder/metal/errors'
 
 module ActiveFolder
   module Metal

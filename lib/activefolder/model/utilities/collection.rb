@@ -1,5 +1,5 @@
-require 'active_folder/model/traits/collection'
-require 'active_folder/model/utilities/symbol'
+require 'activefolder/model/traits/collection'
+require 'activefolder/model/utilities/symbol'
 
 module ActiveFolder
   module Model

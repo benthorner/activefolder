@@ -1,4 +1,4 @@
-require 'active_folder/model/utilities/match'
+require 'activefolder/model/utilities/match'
 
 module ActiveFolder
   module Model

@@ -1,9 +1,9 @@
 require 'ostruct'
 
-require 'active_folder/model/traits/persistence'
-require 'active_folder/model/traits/relation'
-require 'active_folder/model/traits/collection'
-require 'active_folder/model/errors'
+require 'activefolder/model/traits/persistence'
+require 'activefolder/model/traits/relation'
+require 'activefolder/model/traits/collection'
+require 'activefolder/model/errors'
 
 module ActiveFolder
   class Base < OpenStruct

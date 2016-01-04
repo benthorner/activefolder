@@ -1,4 +1,4 @@
-require 'active_folder/metal/config'
+require 'activefolder/metal/config'
 
 module ActiveFolder
   class Config
