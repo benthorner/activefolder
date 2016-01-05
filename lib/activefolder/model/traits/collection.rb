@@ -1,4 +1,5 @@
 require 'activefolder/model/traits/enumeration'
+require 'activefolder/model/errors'
 
 module ActiveFolder
   module Model
@@ -17,6 +18,14 @@ module ActiveFolder
         def create(args, &block)
           instance = build(args, &block);
           instance.save; instance
+        end
+
+        def create!(args, &block)
+          if find args[:name]
+            raise DuplicateError.new args[:name]
+          end
+
+          create(args, &block)
         end
 
         def destroy_all

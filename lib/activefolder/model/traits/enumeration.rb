@@ -11,6 +11,10 @@ module ActiveFolder
           results.count < 2 ? results.first : results
         end
 
+        def find!(name)
+          find(name) || (raise NotFoundError.new name)
+        end
+
         def all(name = '*')
           query_suffix = File.join(model_name, name)
           query = File.join(model_base_dir, '**', query_suffix)

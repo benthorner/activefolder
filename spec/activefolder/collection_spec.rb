@@ -23,6 +23,25 @@ describe 'Collection' do
     end
   end
 
+  describe '.create!' do
+    context 'when the element exists' do
+      before do
+        element.id = nil; element.save!
+      end
+
+      it 'raises a duplicate error' do
+        expect { Model.create!(name: 'model', &block) }
+          .to raise_error(ActiveFolder::Model::DuplicateError)
+      end
+    end
+
+    it 'creates a non-existing element' do
+      result = Model.create(name: 'model', &block)
+      expect(result).to eq element
+      expect(Model.all).to eq [element]
+    end
+  end
+
   describe '.find_or_create' do
     context 'when the element exists' do
       before do

@@ -26,6 +26,21 @@ describe 'Enumeration' do
     end
   end
 
+  describe '.find!' do
+    it 'returns the matching element if found' do
+      expect(Model.find!('model_2')).to eq elements[1]
+    end
+
+    it 'returns nil when no element matches' do
+      expect { Model.find!('model') }
+        .to raise_error(ActiveFolder::Model::NotFoundError)
+    end
+
+    it 'returns an array for multiple matches' do
+      expect(Model.find!('model_*')).to eq elements
+    end
+  end
+
   describe '.first' do
     it 'returns the first element if any' do
       expect(Model.first).to eq elements[0]

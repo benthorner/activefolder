@@ -68,6 +68,9 @@ You can then do some simple queries.
     Country.find('UK') => #<Country name="UK", ...>
     Country.count => 3
 
+    Country.find!('Australia')
+    ActiveFolder::Model::NotFoundError: bar
+
 You can also do complex queries.
 
     Country.where(name: /na/)
@@ -148,6 +151,9 @@ Normal create/destroy is supported...
 
     Country.find_or_create(name: 'UK', languages: ['English'])
     => #<Country name="UK", area=0.24, base_dir="/countries">
+
+    Country.create!(name: 'UK')
+    ActiveFolder::Model::DuplicateError: UK
 
     Country.destroy_all
     => [#<Country name="UK", base_dir="/countries">]
