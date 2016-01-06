@@ -2,7 +2,7 @@ require 'activefolder/errors'
 
 module ActiveFolder
   module Model
-    class MissingAttributeError < Error
+    class AttributeError < Error
       def initialize(attr)
         super("Missing attribute #{attr}")
       end

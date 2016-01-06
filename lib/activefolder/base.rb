@@ -33,8 +33,8 @@ module ActiveFolder
     private
 
     def required(attr)
-      return unless attr.to_s.empty?
-      raise MissingAttributeError.new(attr)
+      return unless send(attr).to_s.empty?
+      raise Model::AttributeError.new(attr)
     end
   end
 end
