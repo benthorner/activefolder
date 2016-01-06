@@ -16,8 +16,6 @@ module ActiveFolder
       @client ||= Metal::Client.new(config.client)
     end
 
-    private
-
     def config
       @config ||= Config.new
     end

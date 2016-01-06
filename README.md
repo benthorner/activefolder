@@ -49,7 +49,9 @@ ActiveFolder supports the following configuration.
       config.client.root_path = :git   # Discover git repo using rugged
     end
 
-### Enumeration Methods
+### Usage
+
+#### Enumeration
 
 Assume the following elements.
 
@@ -84,7 +86,7 @@ You can also do complex queries.
 
 The next section has an example with deep nesting.
 
-### Relation Methods
+#### Relation
 
 Here's a more complicated example.
 
@@ -142,7 +144,7 @@ Complex queries can go across relations.
     Country.where(cities: [streets: [{ name: /Downing/ }]}])
     => [#<Country name="UK", ...">]
 
-### Collection Methods
+#### Collection
 
 Normal create/destroy is supported...
 
@@ -166,7 +168,7 @@ Normal create/destroy is supported...
     Country.find_or_initialize(name: 'UK', languages: ['English'])
     => #<Country name="UK", languages=["English"], base_dir="/countries">
 
-### Persistence Methods
+#### Persistence
 
 Each object can load/save its attributes.
 
@@ -192,7 +194,7 @@ You can also destroy and update objects.
 
 Objects attributes are stored as YAML.
 
-### Discovery Methods
+#### Discovery
 
 Discover an object's heritage...
 
@@ -205,3 +207,11 @@ Discover an object's heritage...
     => #<Country name="UK", ...>
 
 Useful for command line programs.
+
+### Testing
+
+Keep your test directory clean...
+
+    require 'activefolder/rspec'    # Cleanup around examples
+
+Cleanup deletes the ActiveFolder root path.

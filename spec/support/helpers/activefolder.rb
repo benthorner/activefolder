@@ -1,14 +1,4 @@
-require 'activefolder'
-
-RSpec.configure do |config|
-  config.after(:each) do
-    Dir.glob('tmp/*').each { |f| FileUtils.rm_rf(f) }
-  end
-
-  config.before(:each) do
-    Dir.glob('tmp/*').each { |f| FileUtils.rm_rf(f) }
-  end
-end
+require 'activefolder/rspec'
 
 ActiveFolder.setup do |config|
   config.client.root_path = 'tmp'
