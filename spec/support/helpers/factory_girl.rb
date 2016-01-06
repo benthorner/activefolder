@@ -1,10 +1,8 @@
 require 'factory_girl'
-require 'faker'
-
-Dir.glob('./spec/**/*_factory.rb') do |f|
-  require f
-end
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 end
+
+FactoryGirl.definition_file_paths = %w(spec/support/factories)
+FactoryGirl.find_definitions

@@ -1,3 +1,4 @@
+require 'faker'
 require 'pry'
 
 require 'support/helpers/activefolder'
