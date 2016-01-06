@@ -13,7 +13,7 @@ module ActiveFolder
 
       def root_path
         @root_path != :git ? @root_path :
-          rugged.discover(Dir.pwd)
+          rugged.discover('.').workdir
       rescue Rugged::RepositoryError => e
         raise SystemError.new(e)
       end

@@ -12,18 +12,20 @@ describe ActiveFolder::Metal::Config do
     end
 
     context 'when set to :git' do
+      let(:repo) { double :repo, workdir: 'root_path' }
+
       before { subject.root_path = :git }
 
       it 'returns the repository path' do
         allow(Rugged::Repository).to receive(:discover)
-          .with(Dir.pwd).and_return 'root_path'
+          .with('.').and_return repo
 
         expect(subject.root_path).to eq 'root_path'
       end
 
       it 'errors when repository not found' do
         allow(Rugged::Repository).to receive(:discover)
-          .with(Dir.pwd).and_raise Rugged::RepositoryError.new
+          .and_raise Rugged::RepositoryError.new
 
         expect { subject.root_path }
           .to raise_error ActiveFolder::Metal::SystemError
