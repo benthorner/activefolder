@@ -64,11 +64,11 @@ You can then do some simple queries.
     Country.all
     => [#<Country name="Argentina", ...>, #<Country name="Canada", ...>, #<Country name="UK", ...>]
 
-    Country.first => #<Country name="Argentina", ...>
-    Country.last => #<Country name="UK", ...>
+    Country.first   # => #<Country name="Argentina", ...>
+    Country.last   # => #<Country name="UK", ...>
 
-    Country.find('UK') => #<Country name="UK", ...>
-    Country.count => 3
+    Country.find('UK')   # => #<Country name="UK", ...>
+    Country.count   # => 3
 
     Country.find!('Australia')
     ActiveFolder::Model::NotFoundError: bar
@@ -76,13 +76,13 @@ You can then do some simple queries.
 You can also do complex queries.
 
     Country.where(name: /na/)
-      => [#<Country name="Argentina", ...>, #<Country name="Canada", ...>]
+    => [#<Country name="Argentina", ...>, #<Country name="Canada", ...>]
 
     Country.where(area: 0..3)
-      => [#<Country name="Argentina", ...>, #<Country name="UK", ...>]
+    => [#<Country name="Argentina", ...>, #<Country name="UK", ...>]
 
     Country.where(name: /.*/, languages: ['English'])
-      => [#<Country name="Canada", ...>, #<Country name="UK", ...>]
+    => [#<Country name="Canada", ...>, #<Country name="UK", ...>]
 
 The next section has an example with deep nesting.
 
