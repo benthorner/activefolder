@@ -33,6 +33,16 @@ module ActiveFolder
             end
           end
         end
+
+        refine Regexp do
+          alias_method :match!, :match
+
+          def match(object)
+            match! object
+          rescue TypeError
+            false
+          end
+        end
       end
     end
   end
