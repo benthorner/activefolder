@@ -1,3 +1,4 @@
+require 'hooks'
 require 'ostruct'
 
 require 'activefolder/model/traits/persistence'

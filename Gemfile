@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'activesupport'
+gem 'hooks'
 
 group :development do
   gem 'semver2'
