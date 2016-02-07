@@ -13,5 +13,4 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/benthorner/activefolder'
 
   s.add_runtime_dependency 'activesupport', '~> 4.2', '>= 4.2.5'
-  s.add_runtime_dependency 'rugged', '~> 0.23', '>= 0.23.3'
 end

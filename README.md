@@ -46,7 +46,6 @@ ActiveFolder supports the following configuration.
 
     ActiveFolder.setup do |config|
       config.client.root_path = '.'    # (default) relative/absolute path
-      config.client.root_path = :git   # Discover git repo using rugged
     end
 
 ### Usage
