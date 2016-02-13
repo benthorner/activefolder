@@ -1,11 +1,13 @@
-require 'activefolder/model/traits/enumeration'
-
 module ActiveFolder
   module Model
     module Utilities
       module Match
         refine Object do
           def match(object); self == object end
+        end
+
+        refine Class do
+          def match(object); object.is_a? self end
         end
 
         refine Range do
@@ -27,7 +29,7 @@ module ActiveFolder
         refine Array do
           def match(object)
             any? do |condition|
-              object.to_a.any? do |element|
+              Array(object).any? do |element|
                 condition.match(element)
               end
             end

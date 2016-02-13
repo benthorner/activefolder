@@ -61,17 +61,12 @@ describe 'Enumeration' do
        elements[1].model_children.create(name: 'child_2', id: 2)]
     end
 
-    it 'filters by single attribute' do
+    it 'filters by object equality' do
       results = Model.where(name: 'model_1')
       expect(results).to eq [elements[0]]
     end
 
-    it 'filters by multiple attributes' do
-      results = ModelChild.where(name: 'child_2', id: 2)
-      expect(results).to eq [child_elements[1]]
-    end
-
-    it 'filters by range' do
+    it 'filters by numeric range' do
       results = ModelChild.where(id: 1..2)
       expect(results).to eq child_elements
     end
@@ -81,12 +76,25 @@ describe 'Enumeration' do
       expect(results).to eq elements
     end
 
-    it 'filters by array disjunction' do
+    it 'filters by class instance' do
+      results = Model.where(name: String)
+      expect(results).to eq elements
+    end
+
+    it 'filters by array inclusion' do
+      results = ModelChild.where(id: [1])
+      expect(results).to eq [child_elements[0]]
+
       results = Model.where(model_children: child_elements)
       expect(results).to eq elements
     end
 
-    it 'filters recursively' do
+    it 'filters by multiple attributes' do
+      results = ModelChild.where(name: 'child_2', id: 2)
+      expect(results).to eq [child_elements[1]]
+    end
+
+    it 'filters by recursion' do
       params = { model_children: [{ name: 'model_child_1' }] }
       expect(Model.where(**params)).to eq [elements[0]]
     end
