@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Relation' do
   describe '.has_one' do
     let(:link_path) { 'tmp/models/model/model_sibling' }
-    let(:sibling_path) { 'model_siblings/model_sibling' }
+    let(:sibling_path) { '/model_siblings/model_sibling' }
 
     let(:subject) do
       build :model, name: 'model', base_dir: '/models'
@@ -11,7 +11,7 @@ describe 'Relation' do
 
     let(:sibling) do
       create :model_sibling, name: 'model_sibling',
-        base_dir: 'model_siblings'
+        base_dir: '/model_siblings'
     end
 
     it 'links to another element' do
