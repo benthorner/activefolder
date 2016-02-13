@@ -1,6 +1,6 @@
 # ActiveFolder
 
-## A file system ORM based on ActiveRecord.
+## A file system ORM based on ActiveRecord
 
 ActiveFolder gives you programmatic access to the file system at a high level of abstraction, mapping objects to files, and relations to folders.
 
