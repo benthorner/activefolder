@@ -167,6 +167,20 @@ Normal create/destroy is supported...
     Country.find_or_initialize(name: 'UK', languages: ['English'])
     => #<Country name="UK", languages=["English"], base_dir="/countries">
 
+#### Validation
+
+Validation works like `where` for a single attribute.
+
+    class Country < ActiveFolder::Base
+      validate :languages, ['English', 'Spanish']
+    end
+
+Each attribute can have multiple validations.
+
+    class Country < ActiveFolder::Base
+      validate :languages, Array, 'languages must be an array'
+    end
+
 #### Persistence
 
 Each object can load/save its attributes.

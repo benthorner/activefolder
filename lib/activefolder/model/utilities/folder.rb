@@ -4,7 +4,7 @@ require 'activefolder/model/utilities/symbol'
 module ActiveFolder
   module Model
     module Utilities
-      class Collection
+      class Folder
         using Utilities::Symbol
         include Model::Traits::Collection
 

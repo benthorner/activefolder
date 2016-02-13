@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe 'Collection' do
   let(:block) { Proc.new { |model| model.id = 1 } }
-
-  let(:element) do
-    Model.new(name: 'model', base_dir: '/models', id: 1)
-  end
+  let(:element) { build :model, name: 'model', id: 1 }
 
   describe '.build' do
     it 'builds a new unsaved element' do
@@ -31,7 +28,7 @@ describe 'Collection' do
 
       it 'raises a duplicate error' do
         expect { Model.create!(name: 'model', &block) }
-          .to raise_error(ActiveFolder::Model::DuplicateError)
+          .to raise_error ActiveFolder::Model::DuplicateError
       end
     end
 

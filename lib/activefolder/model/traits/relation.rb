@@ -1,4 +1,4 @@
-require 'activefolder/model/utilities/collection'
+require 'activefolder/model/utilities/folder'
 require 'activefolder/model/utilities/symbol'
 require 'activefolder/metal/files/text'
 require 'activefolder/model/traits/discovery'
@@ -14,7 +14,7 @@ module ActiveFolder
         class_methods do
           def has_many collection
             define_method collection do
-              Utilities::Collection.new(self, collection)
+              Utilities::Folder.new(self, collection)
             end
           end
 
@@ -25,11 +25,6 @@ module ActiveFolder
           end
 
           def has_one element
-            define_method :link_file do |name|
-              params = { dir: path, name: name.to_s }
-              Metal::Files::Text.new(**params)
-            end
-
             define_method element do
               begin
                 path = link_file(element).load
@@ -41,6 +36,13 @@ module ActiveFolder
             define_method "#{element}=" do |value|
               link_file(element).save(value.path)
             end
+          end
+        end
+
+        included do
+          def link_file name
+            params = { dir: path, name: name.to_s }
+            Metal::Files::Text.new(**params)
           end
         end
       end

@@ -10,16 +10,17 @@ module ActiveFolder
         included do
           def load
             attrs = attributes_file.load
+
             attrs.each_pair do |key,val|
               self[key] = val
             end
 
-            self
+            run_hook :after_load; self
           end
 
           def save
             attributes_file.save(attributes)
-            self
+            run_hook :before_save; self
           end
 
           def save!; self.save end

@@ -3,6 +3,7 @@ require 'pry'
 
 require 'support/helpers/activefolder'
 require 'support/helpers/factory_girl'
+require 'support/helpers/validation'
 
 RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
